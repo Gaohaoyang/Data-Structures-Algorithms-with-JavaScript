@@ -1,0 +1,17 @@
+{
+    "plugins": [
+        "disqus",
+        "github",
+        "splitter",
+        "anchors",
+        "anchor-navigation"
+    ],
+    "pluginsConfig": {
+        "disqus": {
+            "shortName": "datastructuresalgorithmswithjavascriptnotesghy"
+        },
+        "github": {
+            "url": "https://github.com/Gaohaoyang/Data-Structures-Algorithms-with-JavaScript"
+        }
+    }
+}
