@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaScript 的编程环境和模型 | Introduction</title>
+        <title>使用迭代器访问列表 | Introduction</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../chapter1/section1.1.html" />
+    <link rel="next" href="../chapter3/section3.4.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../chapter3/section3.2.html" />
     
 
         
@@ -65,9 +65,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="JavaScript 的编程环境和模型"
-        data-filepath="chapter1/README.md"
+        data-level="3.3"
+        data-chapter-title="使用迭代器访问列表"
+        data-filepath="chapter3/section3.3.md"
         data-basepath=".."
         data-revision="Fri Jan 22 2016 18:11:32 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="chapter1/index.html">
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
             
                 
                     <a href="../chapter1/index.html">
@@ -381,7 +381,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="chapter3/section3.3.html">
+        <li class="chapter active" data-level="3.3" data-path="chapter3/section3.3.html">
             
                 
                     <a href="../chapter3/section3.3.html">
@@ -656,9 +656,19 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><a name="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;" class="plugin-anchor" href="#1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><span class="fa fa-link"></span></a>1 JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;</h1>
-<p>&#x672C;&#x7AE0;&#x63CF;&#x8FF0;&#x4E86; JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5757;&#x3002;</p>
-<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#1-javascript-的编程环境和模型'>1 JavaScript 的编程环境和模型</a></li></ul></div><a href='#1-javascript-的编程环境和模型' id='goTop'><i class='fa fa-arrow-up'></i></a>
+                        <h1 id="33-&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x5217;&#x8868;"><a name="33-&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x5217;&#x8868;" class="plugin-anchor" href="#33-&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x5217;&#x8868;"><span class="fa fa-link"></span></a>3.3 &#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x5217;&#x8868;</h1>
+<pre><code class="lang-js"><span class="hljs-comment">// &#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x5217;&#x8868;</span>
+<span class="hljs-comment">// &#x4ECE;&#x524D;&#x5411;&#x540E;&#x904D;&#x5386;</span>
+<span class="hljs-keyword">for</span> (list.front(); list.currPos() &lt; list.length(); list.next()) {
+    <span class="hljs-built_in">console</span>.log(list.getElement());
+}
+
+<span class="hljs-comment">// &#x4ECE;&#x540E;&#x5411;&#x524D;&#x904D;&#x5386;</span>
+<span class="hljs-keyword">for</span> (list.end(); list.currPos() &gt;= <span class="hljs-number">0</span>; list.prev()) {
+    <span class="hljs-built_in">console</span>.log(list.getElement());
+}
+</code></pre>
+<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#33-使用迭代器访问列表'>3.3 使用迭代器访问列表</a></li></ul></div><a href='#33-使用迭代器访问列表' id='goTop'><i class='fa fa-arrow-up'></i></a>
                     
                     </section>
                 
@@ -668,10 +678,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../chapter3/section3.2.html" class="navigation navigation-prev " aria-label="Previous page: 实现列表类"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../chapter1/section1.1.html" class="navigation navigation-next " aria-label="Next page: JavaScript 环境"><i class="fa fa-angle-right"></i></a>
+        <a href="../chapter3/section3.4.html" class="navigation navigation-next " aria-label="Next page: 一个基于列表的应用"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

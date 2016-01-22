@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaScript 的编程环境和模型 | Introduction</title>
+        <title>一个用数组实现的队列 | Introduction</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../chapter1/section1.1.html" />
+    <link rel="next" href="../chapter5/section5.3.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../chapter5/section5.1.html" />
     
 
         
@@ -65,9 +65,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="JavaScript 的编程环境和模型"
-        data-filepath="chapter1/README.md"
+        data-level="5.2"
+        data-chapter-title="一个用数组实现的队列"
+        data-filepath="chapter5/section5.2.md"
         data-basepath=".."
         data-revision="Fri Jan 22 2016 18:11:32 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="chapter1/index.html">
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
             
                 
                     <a href="../chapter1/index.html">
@@ -543,7 +543,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="chapter5/section5.2.html">
+        <li class="chapter active" data-level="5.2" data-path="chapter5/section5.2.html">
             
                 
                     <a href="../chapter5/section5.2.html">
@@ -656,9 +656,94 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><a name="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;" class="plugin-anchor" href="#1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><span class="fa fa-link"></span></a>1 JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;</h1>
-<p>&#x672C;&#x7AE0;&#x63CF;&#x8FF0;&#x4E86; JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5757;&#x3002;</p>
-<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#1-javascript-的编程环境和模型'>1 JavaScript 的编程环境和模型</a></li></ul></div><a href='#1-javascript-的编程环境和模型' id='goTop'><i class='fa fa-arrow-up'></i></a>
+                        <h1 id="52-&#x4E00;&#x4E2A;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x7684;&#x961F;&#x5217;"><a name="52-&#x4E00;&#x4E2A;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x7684;&#x961F;&#x5217;" class="plugin-anchor" href="#52-&#x4E00;&#x4E2A;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x7684;&#x961F;&#x5217;"><span class="fa fa-link"></span></a>5.2 &#x4E00;&#x4E2A;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x7684;&#x961F;&#x5217;</h1>
+<p>&#x6570;&#x7EC4;&#x4E2D;&#x7684; <code>push()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x6570;&#x7EC4;&#x672B;&#x5C3E;&#x52A0;&#x5165;&#x5143;&#x7D20;&#xFF0C;<code>shift()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * &#x961F;&#x5217;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Queue</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.dataStore = [];
+    <span class="hljs-keyword">this</span>.enqueue = enqueue; <span class="hljs-comment">//&#x5165;&#x961F;</span>
+    <span class="hljs-keyword">this</span>.dequeue = dequeue; <span class="hljs-comment">//&#x51FA;&#x961F;</span>
+    <span class="hljs-keyword">this</span>.front = front; <span class="hljs-comment">//&#x8BFB;&#x53D6;&#x961F;&#x9996;&#x5143;&#x7D20;</span>
+    <span class="hljs-keyword">this</span>.back = back; <span class="hljs-comment">//&#x8BFB;&#x53D6;&#x961F;&#x5C3E;&#x5143;&#x7D20;</span>
+    <span class="hljs-keyword">this</span>.toString = toString;
+    <span class="hljs-keyword">this</span>.isEmpty = isEmpty;
+}
+
+<span class="hljs-comment">/**
+ * &#x5165;&#x961F;
+ * @param  {[type]} element [description]
+ * @return {[type]}         [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enqueue</span>(<span class="hljs-params">element</span>) </span>{
+    <span class="hljs-keyword">this</span>.dataStore.push(element);
+}
+
+<span class="hljs-comment">/**
+ * &#x51FA;&#x961F;
+ * @return {[type]}         [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dequeue</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.dataStore.shift();
+}
+
+<span class="hljs-comment">/**
+ * &#x961F;&#x9996;&#x5143;&#x7D20;
+ * @return {[type]} [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">front</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.dataStore[<span class="hljs-number">0</span>];
+}
+
+<span class="hljs-comment">/**
+ * &#x961F;&#x5C3E;&#x5143;&#x7D20;
+ * @return {[type]} [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">back</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.dataStore[<span class="hljs-keyword">this</span>.dataStore.length - <span class="hljs-number">1</span>];
+}
+
+<span class="hljs-comment">/**
+ * toString
+ * @return {[type]} [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toString</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> reStr = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.dataStore.length; i++) {
+        reStr += <span class="hljs-keyword">this</span>.dataStore[i] + <span class="hljs-string">&apos;\n&apos;</span>;
+    }
+    <span class="hljs-keyword">return</span> reStr;
+}
+
+<span class="hljs-comment">/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;
+ * @return {Boolean} [description]
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmpty</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.dataStore.length === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+
+
+<span class="hljs-comment">///////////////////</span>
+<span class="hljs-comment">//-----test----- //</span>
+<span class="hljs-comment">///////////////////</span>
+
+<span class="hljs-keyword">var</span> q = <span class="hljs-keyword">new</span> Queue();
+<span class="hljs-built_in">console</span>.log(q.isEmpty()); <span class="hljs-comment">//true</span>
+q.enqueue(<span class="hljs-string">&apos;JavaScript&apos;</span>);
+q.enqueue(<span class="hljs-string">&apos;HTML&apos;</span>);
+q.enqueue(<span class="hljs-string">&apos;CSS&apos;</span>);
+<span class="hljs-built_in">console</span>.log(q.toString());
+<span class="hljs-built_in">console</span>.log(q.dequeue()); <span class="hljs-comment">//JavaScript</span>
+<span class="hljs-built_in">console</span>.log(q.back()); <span class="hljs-comment">//CSS</span>
+<span class="hljs-built_in">console</span>.log(q.front()); <span class="hljs-comment">//HTML</span>
+</code></pre>
+<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#52-一个用数组实现的队列'>5.2 一个用数组实现的队列</a></li></ul></div><a href='#52-一个用数组实现的队列' id='goTop'><i class='fa fa-arrow-up'></i></a>
                     
                     </section>
                 
@@ -668,10 +753,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../chapter5/section5.1.html" class="navigation navigation-prev " aria-label="Previous page: 对队列的操作"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../chapter1/section1.1.html" class="navigation navigation-next " aria-label="Next page: JavaScript 环境"><i class="fa fa-angle-right"></i></a>
+        <a href="../chapter5/section5.3.html" class="navigation navigation-next " aria-label="Next page: 使用队列：方块舞的舞伴分配问题"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaScript 的编程环境和模型 | Introduction</title>
+        <title>使用数组 | Introduction</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../chapter1/section1.1.html" />
+    <link rel="next" href="../chapter2/section2.3.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../chapter2/section2.1.html" />
     
 
         
@@ -65,9 +65,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="JavaScript 的编程环境和模型"
-        data-filepath="chapter1/README.md"
+        data-level="2.2"
+        data-chapter-title="使用数组"
+        data-filepath="chapter2/section2.2.md"
         data-basepath=".."
         data-revision="Fri Jan 22 2016 18:11:32 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="chapter1/index.html">
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
             
                 
                     <a href="../chapter1/index.html">
@@ -210,7 +210,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="chapter2/section2.2.html">
+        <li class="chapter active" data-level="2.2" data-path="chapter2/section2.2.html">
             
                 
                     <a href="../chapter2/section2.2.html">
@@ -656,9 +656,53 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><a name="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;" class="plugin-anchor" href="#1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><span class="fa fa-link"></span></a>1 JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;</h1>
-<p>&#x672C;&#x7AE0;&#x63CF;&#x8FF0;&#x4E86; JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5757;&#x3002;</p>
-<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#1-javascript-的编程环境和模型'>1 JavaScript 的编程环境和模型</a></li></ul></div><a href='#1-javascript-的编程环境和模型' id='goTop'><i class='fa fa-arrow-up'></i></a>
+                        <h1 id="22-&#x4F7F;&#x7528;&#x6570;&#x7EC4;"><a name="22-&#x4F7F;&#x7528;&#x6570;&#x7EC4;" class="plugin-anchor" href="#22-&#x4F7F;&#x7528;&#x6570;&#x7EC4;"><span class="fa fa-link"></span></a>2.2 &#x4F7F;&#x7528;&#x6570;&#x7EC4;</h1>
+<h2 id="221-&#x521B;&#x5EFA;&#x6570;&#x7EC4;"><a name="221-&#x521B;&#x5EFA;&#x6570;&#x7EC4;" class="plugin-anchor" href="#221-&#x521B;&#x5EFA;&#x6570;&#x7EC4;"><span class="fa fa-link"></span></a>2.2.1 &#x521B;&#x5EFA;&#x6570;&#x7EC4;</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> arr1 = [];
+
+<span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];
+
+<span class="hljs-keyword">var</span> arr3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+
+<span class="hljs-keyword">var</span> arr4 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);
+
+<span class="hljs-keyword">var</span> arr5 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">4</span>); <span class="hljs-comment">// &#x6570;&#x7EC4;&#x957F;&#x5EA6;</span>
+</code></pre>
+<p>&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x6570;&#x7EC4;</p>
+<pre><code class="lang-js"><span class="hljs-built_in">Array</span>.isArray(arr1);
+</code></pre>
+<p>&#x63A8;&#x8350;&#x4F7F;&#x7528; <code>[]</code> &#x521B;&#x5EFA;&#x6570;&#x7EC4;&#xFF0C;&#x88AB;&#x8BA4;&#x4E3A;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;</p>
+<h2 id="222-&#x8BFB;&#x5199;&#x6570;&#x7EC4;"><a name="222-&#x8BFB;&#x5199;&#x6570;&#x7EC4;" class="plugin-anchor" href="#222-&#x8BFB;&#x5199;&#x6570;&#x7EC4;"><span class="fa fa-link"></span></a>2.2.2 &#x8BFB;&#x5199;&#x6570;&#x7EC4;</h2>
+<p>&#x4F7F;&#x7528; <code>[]</code> &#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x548C;&#x8BFB;&#x53D6;&#x3002;</p>
+<h2 id="223-&#x7531;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x6570;&#x7EC4;"><a name="223-&#x7531;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x6570;&#x7EC4;" class="plugin-anchor" href="#223-&#x7531;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x6570;&#x7EC4;"><span class="fa fa-link"></span></a>2.2.3 &#x7531;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x6570;&#x7EC4;</h2>
+<p><code>split()</code> &#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x5206;&#x5272;&#x4E3A;&#x6570;&#x7EC4;&#x3002;</p>
+<h2 id="224-&#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x6574;&#x4F53;&#x6027;&#x64CD;&#x4F5C;"><a name="224-&#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x6574;&#x4F53;&#x6027;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#224-&#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x6574;&#x4F53;&#x6027;&#x64CD;&#x4F5C;"><span class="fa fa-link"></span></a>2.2.4 &#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x6574;&#x4F53;&#x6027;&#x64CD;&#x4F5C;</h2>
+<ul>
+<li><p>&#x6D45;&#x590D;&#x5236;</p>
+<p>  &#x76F4;&#x63A5;&#x8D4B;&#x503C;&#xFF0C;&#x5982;&#x4E0B;</p>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">var</span> samenums = nums;
+</code></pre>
+<p>&#x88AB;&#x8D4B;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5F15;&#x7528;&#x3002;&#x5F53;&#x6539;&#x53D8;&#x539F;&#x5F15;&#x7528;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x4E5F;&#x4F1A;&#x611F;&#x77E5;&#x53D8;&#x5316;&#x3002;</p>
+<ul>
+<li><p>&#x6DF1;&#x590D;&#x5236;</p>
+<p>  &#x5C06;&#x539F;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x8D4B;&#x503C;&#x4E00;&#x4EFD;&#x5230;&#x65B0;&#x6570;&#x7EC4;&#x4E2D;&#x3002;</p>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * &#x6DF1;&#x590D;&#x5236;
+ * @param  {Array} arr1 &#x5DF2;&#x77E5;&#x6570;&#x7EC4;
+ * @param  {Array} arr2 &#x65B0;&#x6570;&#x7EC4;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copy</span>(<span class="hljs-params">arr1, arr2</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) {
+        arr2[i] = arr1[i];
+    }
+}
+</code></pre>
+<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#22-使用数组'>2.2 使用数组</a></li><ul><li><a href='#221-创建数组'>2.2.1 创建数组</a></li><li><a href='#222-读写数组'>2.2.2 读写数组</a></li><li><a href='#223-由字符串生成数组'>2.2.3 由字符串生成数组</a></li><li><a href='#224-对数组的整体性操作'>2.2.4 对数组的整体性操作</a></li></ul></ul></div><a href='#22-使用数组' id='goTop'><i class='fa fa-arrow-up'></i></a>
                     
                     </section>
                 
@@ -668,10 +712,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../chapter2/section2.1.html" class="navigation navigation-prev " aria-label="Previous page: JavaScript 中对数组的定义"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../chapter1/section1.1.html" class="navigation navigation-next " aria-label="Next page: JavaScript 环境"><i class="fa fa-angle-right"></i></a>
+        <a href="../chapter2/section2.3.html" class="navigation navigation-next " aria-label="Next page: 存取函数"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

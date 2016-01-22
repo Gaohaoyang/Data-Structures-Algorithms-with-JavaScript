@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaScript 的编程环境和模型 | Introduction</title>
+        <title>列表的抽象数据类型定义 | Introduction</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../chapter1/section1.1.html" />
+    <link rel="next" href="../chapter3/section3.2.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../chapter3/index.html" />
     
 
         
@@ -65,9 +65,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="JavaScript 的编程环境和模型"
-        data-filepath="chapter1/README.md"
+        data-level="3.1"
+        data-chapter-title="列表的抽象数据类型定义"
+        data-filepath="chapter3/section3.1.md"
         data-basepath=".."
         data-revision="Fri Jan 22 2016 18:11:32 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="chapter1/index.html">
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
             
                 
                     <a href="../chapter1/index.html">
@@ -351,7 +351,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1" data-path="chapter3/section3.1.html">
+        <li class="chapter active" data-level="3.1" data-path="chapter3/section3.1.html">
             
                 
                     <a href="../chapter3/section3.1.html">
@@ -656,9 +656,98 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><a name="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;" class="plugin-anchor" href="#1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><span class="fa fa-link"></span></a>1 JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;</h1>
-<p>&#x672C;&#x7AE0;&#x63CF;&#x8FF0;&#x4E86; JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5757;&#x3002;</p>
-<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#1-javascript-的编程环境和模型'>1 JavaScript 的编程环境和模型</a></li></ul></div><a href='#1-javascript-的编程环境和模型' id='goTop'><i class='fa fa-arrow-up'></i></a>
+                        <h1 id="31-&#x5217;&#x8868;&#x7684;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;"><a name="31-&#x5217;&#x8868;&#x7684;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;" class="plugin-anchor" href="#31-&#x5217;&#x8868;&#x7684;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;"><span class="fa fa-link"></span></a>3.1 &#x5217;&#x8868;&#x7684;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;</h1>
+<p><strong>&#x5217;&#x8868;</strong> &#x662F;&#x4E00;&#x7EC4;&#x6709;&#x5E8F;&#x7684;&#x6570;&#x7EC4;&#x3002;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x5143;&#x7D20;&#x6570;&#x91CF;&#x53D7;&#x5230;&#x7A0B;&#x5E8F;&#x5185;&#x5B58;&#x9650;&#x5B9A;&#x3002;</p>
+<p>&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x5143;&#x7D20;&#x7684;&#x5217;&#x8868;&#x79F0;&#x4E3A; <strong>&#x7A7A;&#x5217;&#x8868;</strong>&#x3002;</p>
+<p>&#x5217;&#x8868;&#x6709;&#x63CF;&#x8FF0;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x5217;&#x8868;&#x6709; <strong>&#x524D;</strong> &#x6709; <strong>&#x540E;</strong>&#x3002;</p>
+<p>&#x5217;&#x8868;&#x7684;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5E76;&#x672A;&#x6307;&#x660E;&#x5217;&#x8868;&#x7684;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x6765;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#x3002;</p>
+<ul>
+<li>&#x5217;&#x8868;&#x7684;&#x5C5E;&#x6027;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x540D;&#x79F0;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listSize</td>
+<td>&#x5217;&#x8868;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>&#x5217;&#x8868;&#x7684;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>length</td>
+<td>&#x8FD4;&#x56DE;&#x5217;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x5217;&#x8868;&#x7684;&#x65B9;&#x6CD5;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x540D;&#x79F0;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clear</td>
+<td>&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>toString</td>
+<td>&#x8FD4;&#x56DE;&#x5217;&#x8868;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;</td>
+</tr>
+<tr>
+<td>getElement</td>
+<td>&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>&#x5728;&#x73B0;&#x6709;&#x5143;&#x7D20;&#x540E;&#x63D2;&#x5165;&#x65B0;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>append</td>
+<td>&#x5728;&#x5217;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;&#x65B0;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>front</td>
+<td>&#x5C06;&#x5217;&#x8868;&#x7684;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x79FB;&#x52A8;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>end</td>
+<td>&#x5C06;&#x5217;&#x8868;&#x7684;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x79FB;&#x52A8;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>&#x5C06;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x540E;&#x79FB;&#x4E00;&#x4F4D;</td>
+</tr>
+<tr>
+<td>next</td>
+<td>&#x5C06;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x524D;&#x79FB;&#x4E00;&#x4F4D;</td>
+</tr>
+<tr>
+<td>currPos</td>
+<td>&#x8FD4;&#x56DE;&#x5217;&#x8868;&#x7684;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>moveTo</td>
+<td>&#x5C06;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x79FB;&#x52A8;&#x5230;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;</td>
+</tr>
+</tbody>
+</table>
+<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#31-列表的抽象数据类型定义'>3.1 列表的抽象数据类型定义</a></li></ul></div><a href='#31-列表的抽象数据类型定义' id='goTop'><i class='fa fa-arrow-up'></i></a>
                     
                     </section>
                 
@@ -668,10 +757,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../chapter3/index.html" class="navigation navigation-prev " aria-label="Previous page: 列表"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../chapter1/section1.1.html" class="navigation navigation-next " aria-label="Next page: JavaScript 环境"><i class="fa fa-angle-right"></i></a>
+        <a href="../chapter3/section3.2.html" class="navigation navigation-next " aria-label="Next page: 实现列表类"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

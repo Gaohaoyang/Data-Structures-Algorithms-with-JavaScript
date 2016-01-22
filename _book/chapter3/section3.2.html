@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaScript 的编程环境和模型 | Introduction</title>
+        <title>实现列表类 | Introduction</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../chapter1/section1.1.html" />
+    <link rel="next" href="../chapter3/section3.3.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../chapter3/section3.1.html" />
     
 
         
@@ -65,9 +65,9 @@
         
         
     <div class="book"
-        data-level="1"
-        data-chapter-title="JavaScript 的编程环境和模型"
-        data-filepath="chapter1/README.md"
+        data-level="3.2"
+        data-chapter-title="实现列表类"
+        data-filepath="chapter3/section3.2.md"
         data-basepath=".."
         data-revision="Fri Jan 22 2016 18:11:32 GMT+0800 (中国标准时间)"
         data-innerlanguage="">
@@ -98,7 +98,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="chapter1/index.html">
+        <li class="chapter " data-level="1" data-path="chapter1/index.html">
             
                 
                     <a href="../chapter1/index.html">
@@ -366,7 +366,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="chapter3/section3.2.html">
+        <li class="chapter active" data-level="3.2" data-path="chapter3/section3.2.html">
             
                 
                     <a href="../chapter3/section3.2.html">
@@ -656,9 +656,169 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><a name="1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;" class="plugin-anchor" href="#1-javascript-&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;"><span class="fa fa-link"></span></a>1 JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x6A21;&#x578B;</h1>
-<p>&#x672C;&#x7AE0;&#x63CF;&#x8FF0;&#x4E86; JavaScript &#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#x548C;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5757;&#x3002;</p>
-<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#1-javascript-的编程环境和模型'>1 JavaScript 的编程环境和模型</a></li></ul></div><a href='#1-javascript-的编程环境和模型' id='goTop'><i class='fa fa-arrow-up'></i></a>
+                        <h1 id="32-&#x5B9E;&#x73B0;&#x5217;&#x8868;&#x7C7B;"><a name="32-&#x5B9E;&#x73B0;&#x5217;&#x8868;&#x7C7B;" class="plugin-anchor" href="#32-&#x5B9E;&#x73B0;&#x5217;&#x8868;&#x7C7B;"><span class="fa fa-link"></span></a>3.2 &#x5B9E;&#x73B0;&#x5217;&#x8868;&#x7C7B;</h1>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">List</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.listSize = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span>.pos = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span>.dataStore = [];
+    <span class="hljs-keyword">this</span>.clear = clear;
+    <span class="hljs-keyword">this</span>.find = find;
+    <span class="hljs-keyword">this</span>.toString = toString;
+    <span class="hljs-keyword">this</span>.insert = insert;
+    <span class="hljs-keyword">this</span>.append = append;
+    <span class="hljs-keyword">this</span>.remove = remove;
+    <span class="hljs-keyword">this</span>.front = front;
+    <span class="hljs-keyword">this</span>.end = end;
+    <span class="hljs-keyword">this</span>.prev = prev;
+    <span class="hljs-keyword">this</span>.next = next;
+    <span class="hljs-keyword">this</span>.length = length;
+    <span class="hljs-keyword">this</span>.currPos = currPos;
+    <span class="hljs-keyword">this</span>.getElement = getElement;
+    <span class="hljs-keyword">this</span>.contains = contains;
+}
+</code></pre>
+<h2 id="321-append&#xFF1A;&#x7ED9;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x5143;&#x7D20;"><a name="321-append&#xFF1A;&#x7ED9;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x5143;&#x7D20;" class="plugin-anchor" href="#321-append&#xFF1A;&#x7ED9;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.1 append&#xFF1A;&#x7ED9;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x5143;&#x7D20;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * append &#x5728;&#x5217;&#x8868;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;&#x5143;&#x7D20;
+ * @param  {element} element &#x8981;&#x6DFB;&#x52A0;&#x7684;&#x5143;&#x7D20;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">append</span>(<span class="hljs-params">element</span>) </span>{
+    <span class="hljs-keyword">this</span>.dataStore[<span class="hljs-keyword">this</span>.listSize++] = element;
+}
+</code></pre>
+<h2 id="322-find&#xFF1A;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x67D0;&#x4E00;&#x5143;&#x7D20;"><a name="322-find&#xFF1A;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x67D0;&#x4E00;&#x5143;&#x7D20;" class="plugin-anchor" href="#322-find&#xFF1A;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x67D0;&#x4E00;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.2 find&#xFF1A;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x67D0;&#x4E00;&#x5143;&#x7D20;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * find &#x67E5;&#x627E;&#x5143;&#x7D20;
+ * @param  {element} element &#x8981;&#x67E5;&#x627E;&#x7684;&#x5143;&#x7D20;
+ * @return {Number}         &#x67E5;&#x5230;&#xFF0C;&#x8FD4;&#x56DE;&#x7D22;&#x5F15;&#xFF1B;&#x672A;&#x67E5;&#x5230;&#xFF0C;&#x8FD4;&#x56DE;-1
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span>(<span class="hljs-params">element</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.dataStore.length; i++) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.dataStore[i] == element) {
+            <span class="hljs-keyword">return</span> i;
+        }
+    }
+    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+}
+</code></pre>
+<h2 id="323-remove&#xFF1A;&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;"><a name="323-remove&#xFF1A;&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;" class="plugin-anchor" href="#323-remove&#xFF1A;&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.3 remove&#xFF1A;&#x4ECE;&#x5217;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;</h2>
+<p><code>remove()</code> &#x4F7F;&#x7528; <code>find()</code> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x4F4D;&#x7F6E;&#x5BF9;&#x6570;&#x7EC4; dateStore &#x8FDB;&#x884C;&#x622A;&#x53D6;&#x3002;&#x6570;&#x7EC4;&#x6539;&#x53D8;&#x540E;&#xFF0C;&#x5C06;&#x53D8;&#x91CF; listSize &#x7684;&#x503C;&#x51CF; 1&#xFF0C;&#x4EE5;&#x53CD;&#x6620;&#x5217;&#x8868;&#x7684;&#x6700;&#x65B0;&#x957F;&#x5EA6;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * remove &#x5220;&#x9664;&#x5143;&#x7D20;
+ * @param  {element} element &#x8981;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;
+ * @return {Boolean}         &#x5220;&#x9664;&#x6210;&#x529F;&#xFF0C;&#x8FD4;&#x56DE; true&#xFF0C;&#x4E0D;&#x6210;&#x529F;&#x8FD4;&#x56DE; false
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params">element</span>) </span>{
+    <span class="hljs-keyword">var</span> foundAt = <span class="hljs-keyword">this</span>.find(element);
+    <span class="hljs-keyword">if</span> (foundAt &gt; -<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">this</span>.dataStore.splice(foundAt, <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">this</span>.listSize--;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<h2 id="324-length&#xFF1A;&#x5217;&#x8868;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5143;&#x7D20;"><a name="324-length&#xFF1A;&#x5217;&#x8868;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5143;&#x7D20;" class="plugin-anchor" href="#324-length&#xFF1A;&#x5217;&#x8868;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.4 length&#xFF1A;&#x5217;&#x8868;&#x4E2D;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5143;&#x7D20;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * length &#x5143;&#x7D20;&#x4E2A;&#x6570;
+ * @return {Number} &#x5217;&#x8868;&#x957F;&#x5EA6;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">length</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.listSize;
+}
+</code></pre>
+<h2 id="325-tostring&#xFF1A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;"><a name="325-tostring&#xFF1A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;" class="plugin-anchor" href="#325-tostring&#xFF1A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.5 toString&#xFF1A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * toString
+ * @return {Array} &#x663E;&#x793A;&#x5F53;&#x524D;&#x5217;&#x8868;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toString</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.dataStore;
+}
+</code></pre>
+<h2 id="326-insert&#xFF1A;&#x5411;&#x5217;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;"><a name="326-insert&#xFF1A;&#x5411;&#x5217;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;" class="plugin-anchor" href="#326-insert&#xFF1A;&#x5411;&#x5217;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.6 insert&#xFF1A;&#x5411;&#x5217;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</h2>
+<p>&#x5148;&#x627E;&#x5230;&#x4F4D;&#x7F6E;&#xFF0C;&#x518D;&#x4F7F;&#x7528; <code>splice()</code> &#x64CD;&#x4F5C;&#xFF0C;&#x540C;&#x65F6; <code>listSize</code> &#x52A0;1&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * insert &#x63D2;&#x5165;
+ * @param  {element} element &#x5F85;&#x63D2;&#x5165;&#x7684;&#x5143;&#x7D20;
+ * @param  {element} after   &#x5728;after&#x4E4B;&#x540E;&#x63D2;&#x5165;&#x5143;&#x7D20;
+ * @return {Boolean}         &#x63D2;&#x5165;&#x6210;&#x529F;&#xFF0C;true&#xFF0C;&#x4E0D;&#x6210;&#x529F;false
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert</span>(<span class="hljs-params">element, after</span>) </span>{
+    <span class="hljs-keyword">var</span> insertPos = <span class="hljs-keyword">this</span>.find(after);
+    <span class="hljs-keyword">if</span> (insertPos &gt; -<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">this</span>.dataStore.splice(insertPos + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, element);
+        <span class="hljs-keyword">this</span>.listSize++;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<h2 id="327-clear&#xFF1A;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5143;&#x7D20;"><a name="327-clear&#xFF1A;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5143;&#x7D20;" class="plugin-anchor" href="#327-clear&#xFF1A;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5143;&#x7D20;"><span class="fa fa-link"></span></a>3.2.7 clear&#xFF1A;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5143;&#x7D20;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * clear &#x6E05;&#x7A7A;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clear</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>.dataStore;
+    <span class="hljs-keyword">this</span>.dataStore = [];
+    <span class="hljs-keyword">this</span>.listSize = <span class="hljs-keyword">this</span>.pos = <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="328-contains&#xFF1A;&#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x503C;&#x662F;&#x5426;&#x5728;&#x5217;&#x8868;&#x4E2D;"><a name="328-contains&#xFF1A;&#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x503C;&#x662F;&#x5426;&#x5728;&#x5217;&#x8868;&#x4E2D;" class="plugin-anchor" href="#328-contains&#xFF1A;&#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x503C;&#x662F;&#x5426;&#x5728;&#x5217;&#x8868;&#x4E2D;"><span class="fa fa-link"></span></a>3.2.8 contains&#xFF1A;&#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x503C;&#x662F;&#x5426;&#x5728;&#x5217;&#x8868;&#x4E2D;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * contains &#x662F;&#x5426;&#x5305;&#x542B;
+ * @param  {element} element &#x67E5;&#x627E;&#x7684;&#x5143;&#x7D20;
+ * @return {Boolean}
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">contains</span>(<span class="hljs-params">element</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.dataStore.length; i++) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.dataStore[i] == element) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<h2 id="329-&#x904D;&#x5386;&#x5217;&#x8868;"><a name="329-&#x904D;&#x5386;&#x5217;&#x8868;" class="plugin-anchor" href="#329-&#x904D;&#x5386;&#x5217;&#x8868;"><span class="fa fa-link"></span></a>3.2.9 &#x904D;&#x5386;&#x5217;&#x8868;</h2>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * front
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">front</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.pos = <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/**
+ * end
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">end</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.pos = <span class="hljs-keyword">this</span>.listSize - <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.pos &lt; <span class="hljs-keyword">this</span>.listSize) {
+        <span class="hljs-keyword">this</span>.pos++;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prev</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.pos &gt; -<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">this</span>.pos--;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">currPos</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pos;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">moveTo</span>(<span class="hljs-params">postion</span>) </span>{
+    <span class="hljs-keyword">this</span>.pos = postion;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getElement</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.dataStore[<span class="hljs-keyword">this</span>.pos];
+}
+</code></pre>
+<div id='anchors-navbar'><i class='fa fa-anchor'></i><ul><li><a href='#32-实现列表类'>3.2 实现列表类</a></li><ul><li><a href='#321-append：给列表添加元素'>3.2.1 append：给列表添加元素</a></li><li><a href='#322-find：在列表中查找某一元素'>3.2.2 find：在列表中查找某一元素</a></li><li><a href='#323-remove：从列表中删除元素'>3.2.3 remove：从列表中删除元素</a></li><li><a href='#324-length：列表中有多少个元素'>3.2.4 length：列表中有多少个元素</a></li><li><a href='#325-tostring：显示列表中的元素'>3.2.5 toString：显示列表中的元素</a></li><li><a href='#326-insert：向列表中插入一个元素'>3.2.6 insert：向列表中插入一个元素</a></li><li><a href='#327-clear：清空列表中所有的元素'>3.2.7 clear：清空列表中所有的元素</a></li><li><a href='#328-contains：判断给定值是否在列表中'>3.2.8 contains：判断给定值是否在列表中</a></li><li><a href='#329-遍历列表'>3.2.9 遍历列表</a></li></ul></ul></div><a href='#32-实现列表类' id='goTop'><i class='fa fa-arrow-up'></i></a>
                     
                     </section>
                 
@@ -668,10 +828,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../chapter3/section3.1.html" class="navigation navigation-prev " aria-label="Previous page: 列表的抽象数据类型定义"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../chapter1/section1.1.html" class="navigation navigation-next " aria-label="Next page: JavaScript 环境"><i class="fa fa-angle-right"></i></a>
+        <a href="../chapter3/section3.3.html" class="navigation navigation-next " aria-label="Next page: 使用迭代器访问列表"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
