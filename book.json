@@ -4,7 +4,8 @@
         "github",
         "splitter",
         "anchors",
-        "anchor-navigation"
+        "anchor-navigation",
+        "expandable-chapters"
     ],
     "pluginsConfig": {
         "disqus": {
